@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use Carbon\Carbon;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -24,9 +25,11 @@ class TaskController extends Controller
         }
         $task = new Task;
         $task->name = $request->name;
+        $task->created_at = Carbon::now();
         $task->save();
         return redirect ('/');
     }
+
     public function destroy(Task $task)
     {
         $task->delete();
