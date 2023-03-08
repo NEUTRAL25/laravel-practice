@@ -82,5 +82,5 @@
     @endif
 
     <script src="{{ asset('js/delete-task.js') }}"></script>
-    
+
 @endsection
