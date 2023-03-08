@@ -37,8 +37,6 @@ public function store(Request $request)
     return redirect('/');
 }
 
-
-
 public function destroy(Task $task)
 {
     $task->delete();
