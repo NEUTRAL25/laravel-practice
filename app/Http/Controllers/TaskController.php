@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Task;
 use Illuminate\Support\Facades\Validator;
@@ -32,8 +33,11 @@ public function store(Request $request)
     $task->name = $request->name;
     $task->created_at = now(); //sets time to real-time
     $task->save();
+
     return redirect('/');
 }
+
+
 
 public function destroy(Task $task)
 {
@@ -41,4 +45,5 @@ public function destroy(Task $task)
  
     return redirect('/');
 }
+
 }
