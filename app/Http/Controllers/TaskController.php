@@ -16,7 +16,10 @@ class TaskController extends Controller
         'tasks' => $tasks
     ]);
 }
-
+public function create()
+{
+    return view('/tasks');
+}
 public function store(Request $request)
 {
     $validator = Validator::make($request->all(), [
@@ -24,7 +27,7 @@ public function store(Request $request)
     ]);
  
     if ($validator->fails()) {
-        return redirect('/')
+        return redirect('/tasks')
             ->withInput()
             ->withErrors($validator);
     }
@@ -33,16 +36,15 @@ public function store(Request $request)
     $task->name = $request->name;
     $task->created_at = now(); //sets time to real-time
     $task->save();
-    return redirect('/');
+ 
+    return redirect('/tasks');
 }
-
 
 
 public function destroy(Task $task)
 {
     $task->delete();
  
-    return redirect('/');
+    return redirect('/tasks');
 }
-
 }
