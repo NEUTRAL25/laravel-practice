@@ -18,14 +18,19 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <!-- CSS -->
         <style>
-            .ui-widget-header,.ui-state-default, ui-button {
-                background:#667b1d;
-                border: 1px solid #b9cd6d;
+            .ui-widget-header {
+                background: #8b949e;;
+                border: 1px solid ;
                 color: #FFFFFF;
                 font-weight: bold;
             }
-            body {
-                background-color: #ced7d8;
+            ui-button {
+                background:#ffffff;
+                border: 1px solid #b9cd6d;
+                color: #FFFFFF;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
             }
             i {
                 padding-right: 10px;
@@ -48,9 +53,6 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-success">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

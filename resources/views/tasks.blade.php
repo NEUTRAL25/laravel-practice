@@ -8,7 +8,10 @@
         </button>
 
          <!-- tentative for delete all task-->
+        <form method="POST" action="{{ route('tasks.clear') }}">
+            @csrf
         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete all tasks?')">Delete All Tasks</button>
+        </form>
     </div>
 
     <div class="panel-body" id = "add-tasks">
@@ -37,43 +40,42 @@
     <!-- TODO: Current Tasks -->
 	 @if (count($tasks) > 0)
         <div class="panel panel-default">
-            <div class="panel-heading p-4 text-center border border-white">
+            <div class="panel-heading p-4 text-center">
                 Current Tasks
             </div>
             <div class="panel-body">
-                <table class="table table-default task-table border border-white">
+                <table class="table table-default task-table">
                     <!-- Table Headings -->
-                    <thead>
+                    <thead class= "col" >
                         <th>Task</th>
-                        <th>&nbsp;</th>
+                        <th>Date</th>
+                        <th>Actions</th>
                     </thead>
                     <!-- Table Body -->
-                    <tbody>
+                    <tbody class= "col">
                         @foreach ($tasks as $task)
                             <tr>
                                 <!-- Task Name -->
-                                <td class="table-text pt-3 col">
+                                <td class="table-text pt-3">
                                     <div>{{ $task->name }}</div>
                                 </td>
-                                <td class= "col">
+                                <td>
                                 <form action="{{ url('task/'.$task->id) }}" method="POST">
-                                        {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-danger col-md-auto mr-1 pl-3 pr-3">
-                                                <i class="fa fa-trash"></i> Delete
-                                        </button>
-                                    </form>
-                                    <input type="hidden" name="_method" value="DELETE">
+                                            {{ csrf_field() }}
                                 </td>
-                                <form action="{{ url('task/'.$task->id) }}" method="POST">
-                                <td class= "col">
-                                        <!-- tentative for edit button-->
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-primary col-md-auto ml-1 l-4 pr-3">
-                                                <i class="fa fa-trash"></i> Modify
-                                        </button>
-                                </form>
+                                <td class = "col">
+                                    <form action="{{ url('task/'.$task->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                            <button type="submit" class="btn btn-danger mr-1 pl-3 pr-3">
+                                                    <i class="fa fa-trash"></i> Delete
+                                            </button>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="btn btn-primary ml-1 pl-3 pr-3">
+                                                    <i class="fa fa-trash"></i> Modify
+                                            </button>
+                                            <input type="hidden" name="_method" value="DELETE">
+                                    </form>
                                     <!-- TODO: Delete Button -->
                                 </td>
                             </tr>

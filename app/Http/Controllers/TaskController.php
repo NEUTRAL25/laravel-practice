@@ -47,4 +47,13 @@ public function destroy(Task $task)
  
     return redirect('/tasks');
 }
+
+public function clear()
+{
+    // Delete all tasks
+    Task::truncate();
+
+    // Redirect back to the task list
+    return redirect()->route('tasks.index');
+}
 }
